@@ -10,6 +10,17 @@ const firebaseConfig = {
   appId: import.meta.env.VITE_FIREBASE_APP_ID,
 };
 
+const missingFirebaseConfig = Object.entries(firebaseConfig)
+  .filter(([, value]) => !value)
+  .map(([key]) => key);
+
+if (missingFirebaseConfig.length > 0) {
+  console.error(
+    `Faltan variables de Firebase: ${missingFirebaseConfig.join(", ")}. ` +
+      "Revisa .env.local y reinicia el servidor de Vite.",
+  );
+}
+
 const app = initializeApp(firebaseConfig);
 
 export const db = getFirestore(app);
