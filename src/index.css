@@ -1,0 +1,67 @@
+:root {
+  --bg: #05070b;
+  --panel: rgba(7, 12, 18, 0.84);
+  --panel-strong: rgba(4, 9, 14, 0.95);
+  --text: #dce8f0;
+  --muted: #889aa5;
+  --cyan: #8edbe8;
+  --cyan-dim: rgba(64, 181, 196, 0.34);
+  --line: rgba(142, 219, 232, 0.2);
+  --warning: #ffd58b;
+  --danger: #ff8e8e;
+  --shadow: rgba(8, 220, 255, 0.15);
+  --mono: "Courier New", Consolas, "Liberation Mono", monospace;
+
+  color: var(--text);
+  background: var(--bg);
+  font-family: var(--mono);
+  font-synthesis: none;
+  line-height: 1.45;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  min-width: 320px;
+  margin: 0;
+  overflow-x: hidden;
+  background:
+    radial-gradient(circle at 18% 12%, rgba(75, 177, 199, 0.18), transparent 34rem),
+    radial-gradient(circle at 82% 8%, rgba(255, 213, 139, 0.08), transparent 28rem),
+    linear-gradient(135deg, #030407 0%, #071019 48%, #020305 100%);
+}
+
+body::before {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  content: "";
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.035) 50%, rgba(0, 0, 0, 0.1) 50%),
+    linear-gradient(90deg, rgba(255, 0, 0, 0.025), rgba(0, 255, 255, 0.018));
+  background-size: 100% 4px, 7px 100%;
+  mix-blend-mode: screen;
+  opacity: 0.42;
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+a {
+  color: inherit;
+}
