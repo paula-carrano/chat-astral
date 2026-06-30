@@ -1,15 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
-function SignalMark() {
-  return (
-    <span className="signal-mark" aria-hidden="true">
-      <span></span>
-      <span></span>
-      <span></span>
-    </span>
-  );
-}
+import { SignalMark } from "../components/icons";
+import { saveProfile } from "../utils/profile";
 
 export function Home() {
   const navigate = useNavigate();
@@ -19,13 +11,7 @@ export function Home() {
   function handleSubmit(event) {
     event.preventDefault();
 
-    const userName = name.trim() || "Superviviente_Anonimo";
-    const userPlace = place.trim() || "Ubicacion Desconocida";
-
-    localStorage.setItem(
-      "survivorProfile",
-      JSON.stringify({ name: userName, place: userPlace }),
-    );
+    saveProfile({ name, place });
     navigate("/chat");
   }
 
