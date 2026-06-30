@@ -7,21 +7,28 @@ export function getSavedProfile() {
     return {
       name: profile?.name || "Superviviente_Anonimo",
       place: profile?.place || "Ubicacion Desconocida",
+      location: profile?.location || null,
     };
   } catch {
     return {
       name: "Superviviente_Anonimo",
       place: "Ubicacion Desconocida",
+      location: null,
     };
   }
 }
 
-export function saveProfile({ name, place }) {
+export function saveProfile({ name, location }) {
   const userName = name.trim() || "Superviviente_Anonimo";
-  const userPlace = place.trim() || "Ubicacion Desconocida";
+  const userLocation = location || null;
+  const userPlace = userLocation?.nombre || "Ubicacion Desconocida";
 
   localStorage.setItem(
     PROFILE_STORAGE_KEY,
-    JSON.stringify({ name: userName, place: userPlace }),
+    JSON.stringify({
+      name: userName,
+      place: userPlace,
+      location: userLocation,
+    }),
   );
 }

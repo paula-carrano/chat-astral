@@ -85,6 +85,7 @@ h1 {
 }
 
 .access-form input,
+.access-form select,
 .composer input,
 .composer select {
   width: 100%;
@@ -97,6 +98,7 @@ h1 {
 }
 
 .access-form input,
+.access-form select,
 .composer input {
   padding: 0 14px;
 }
@@ -107,6 +109,7 @@ h1 {
 }
 
 .access-form input:focus,
+.access-form select:focus,
 .composer select:focus {
   border-color: var(--cyan);
   outline: 2px solid rgba(142, 219, 232, 0.18);
@@ -137,6 +140,12 @@ h1 {
 
 .primary-action:hover {
   filter: brightness(1.08);
+}
+
+.primary-action:disabled {
+  opacity: 0.48;
+  cursor: not-allowed;
+  filter: none;
 }
 
 .status-strip {
@@ -224,6 +233,14 @@ h1 {
   display: inline-flex;
   align-items: center;
   gap: 6px;
+}
+
+.chat-message .message-coordinates {
+  margin: 6px 0 0;
+  color: var(--cyan);
+  font-size: 0.78rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
 }
 
 .chat-message p {
