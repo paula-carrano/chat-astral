@@ -551,4 +551,36 @@ h1 {
   .composer button {
     min-width: 44px;
   }
+
+}
+
+.system-banner {
+    margin-bottom: 0.75rem;
+    padding: 0.35rem 0.75rem;
+    border-radius: 999px;
+    background: #ffc107;
+    color: #000000;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    display: inline-block;
+  }
+
+  .admin-composer {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+    margin-top: 1rem;
+}
+
+.admin-composer input,
+.admin-composer button {
+    width: 100%;
+    min-height: 48px;
+    box-sizing: border-box;
+}
+
+.admin-composer button {
+    margin-top: 8px;
 }
