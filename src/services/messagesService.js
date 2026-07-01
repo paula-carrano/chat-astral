@@ -4,6 +4,7 @@ import {
   onSnapshot,
   orderBy,
   query,
+  serverTimestamp,
 } from "firebase/firestore";
 import { db } from "../firebase";
 
@@ -37,7 +38,7 @@ export async function sendMessage({ profile, text }) {
     autor: profile.name,
     ubicacion: profile.place,
     mensaje: text,
-    fecha: new Date().toISOString(),
+    fecha: serverTimestamp(),
   };
 
   console.log("Enviando mensaje a Firestore:", {
@@ -49,4 +50,14 @@ export async function sendMessage({ profile, text }) {
   console.log("Mensaje guardado en Firestore:", docRef.id);
 
   return docRef;
+}
+
+export async function sendSystemMessage(text) {
+    return addDoc(getMessagesCollection(), {
+        autor: "SISTEMA",
+        ubicacion: "Centro de Operaciones",
+        mensaje: text,
+        tipo: "SISTEMA",
+        fecha: serverTimestamp(),
+    });
 }
