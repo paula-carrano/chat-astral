@@ -64,76 +64,83 @@ export function Home() {
   }
 
   return (
-    <main className="screen home-screen container-fluid">
-      <div className="row justify-content-center w-100">
-        <section
-          className="access-panel col-12 col-md-10 col-lg-8 col-xl-7"
-          aria-labelledby="access-title"
-        >
-          <p className="eyebrow">
-            <SignalMark />
-            Transmision protegida
-          </p>
-          <h1 id="access-title" className="home-title">
-            Chat de Supervivientes
-          </h1>
-          <p className="access-copy">
-            Identificate para entrar al canal de emergencia. La conexion esta en
-            modo visual de prueba.
-          </p>
+    <main className="home-screen">
+      <div className="container px-3 px-sm-4">
+        <div className="row justify-content-center g-0">
+          <section
+            className="access-panel col-12 col-sm-11 col-md-10 col-lg-8"
+            aria-labelledby="access-title"
+          >
+            <p className="eyebrow">
+              <SignalMark />
+              Transmision protegida
+            </p>
+            <h1 id="access-title" className="home-title">
+              Chat de Supervivientes
+            </h1>
+            <p className="access-copy">
+              Identificate para entrar al canal de emergencia. La conexion esta
+              en modo visual de prueba.
+            </p>
 
-          <form className="access-form" onSubmit={handleSubmit}>
-            <label>
-              Nombre
-              <input
-                type="text"
-                placeholder="Ej: Superviviente_01"
-                value={name}
-                onChange={(event) => setName(event.target.value)}
-              />
-            </label>
-            <label>
-              Ubicacion
-              <select
-                value={selectedLocationId}
-                onChange={(event) => setSelectedLocationId(event.target.value)}
-                disabled={isLoadingLocations || locations.length === 0}
-              >
-                {isLoadingLocations && (
-                  <option value="">Cargando ubicaciones...</option>
-                )}
-                {!isLoadingLocations && locations.length === 0 && (
-                  <option value="">Sin ubicaciones disponibles</option>
-                )}
-                {locations.map((location) => (
-                  <option key={location.id} value={location.id}>
-                    {location.nombre}
-                  </option>
-                ))}
-              </select>
-            </label>
-            {locationsError && (
-              <p className="system-message warning-text">{locationsError}</p>
-            )}
-            {!isLoadingLocations &&
-              !locationsError &&
-              locations.length === 0 && (
-                <p className="system-message warning-text">
-                  No hay ubicaciones disponibles.
-                </p>
+            <form className="access-form" onSubmit={handleSubmit}>
+              <label>
+                Nombre
+                <input
+                  type="text"
+                  placeholder="Ej: Superviviente_01"
+                  value={name}
+                  onChange={(event) => setName(event.target.value)}
+                />
+              </label>
+              <label>
+                Ubicacion
+                <select
+                  value={selectedLocationId}
+                  onChange={(event) =>
+                    setSelectedLocationId(event.target.value)
+                  }
+                  disabled={isLoadingLocations || locations.length === 0}
+                >
+                  {isLoadingLocations && (
+                    <option value="">Cargando ubicaciones...</option>
+                  )}
+                  {!isLoadingLocations && locations.length === 0 && (
+                    <option value="">Sin ubicaciones disponibles</option>
+                  )}
+                  {locations.map((location) => (
+                    <option key={location.id} value={location.id}>
+                      {location.nombre}
+                    </option>
+                  ))}
+                </select>
+              </label>
+              {locationsError && (
+                <p className="system-message warning-text">{locationsError}</p>
               )}
-            <button
-              className="primary-action"
-              type="submit"
-              disabled={!selectedLocationId}
-            >
-              Ingresar
-            </button>
-          </form>
-        </section>
+              {!isLoadingLocations &&
+                !locationsError &&
+                locations.length === 0 && (
+                  <p className="system-message warning-text">
+                    No hay ubicaciones disponibles.
+                  </p>
+                )}
+              <button
+                className="primary-action"
+                type="submit"
+                disabled={!selectedLocationId}
+              >
+                Ingresar
+              </button>
+            </form>
+          </section>
+        </div>
       </div>
 
-      <aside className="status-strip" aria-label="Estado de la senal">
+      <aside
+        className="status-strip container px-3 px-sm-4"
+        aria-label="Estado de la senal"
+      >
         <span>Canal 07 activo</span>
         <span>Ruido bajo</span>
         <span>Ultimo pulso 07:24 p. m.</span>

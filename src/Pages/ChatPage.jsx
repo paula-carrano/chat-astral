@@ -74,16 +74,21 @@ export function ChatPage() {
     return (
         <main className="screen chat-screen">
             <header className="chat-header">
-                <div>
-                    <p className="eyebrow">
-                        <SignalMark />
-                        Transmision en vivo
-                    </p>
-                    <h1>Chat de Supervivientes</h1>
+                <p className="eyebrow">
+                    <SignalMark />
+                    Transmision en vivo
+                </p>
+                <div className="chat-title-row d-flex align-items-start justify-content-between gap-3">
+                    <div className="chat-title-block">
+                        <h1>Chat de Supervivientes</h1>
+                    </div>
+                    <Link
+                        className="ghost-action flex-shrink-0 align-self-start"
+                        to="/"
+                    >
+                        Salir
+                    </Link>
                 </div>
-                <Link className="ghost-action" to="/">
-                    Salir
-                </Link>
             </header>
 
             <section className="chat-log" aria-label="Mensajes del canal">

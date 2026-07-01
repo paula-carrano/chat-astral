@@ -13,16 +13,17 @@
 }
 
 .home-screen {
+  width: 100%;
+  min-height: 100svh;
   display: grid;
   grid-template-rows: 1fr auto;
   gap: 24px;
   align-items: center;
+  padding: 28px 0;
 }
 
-.home-screen > .row {
-  width: 100%;
-  margin-right: 0;
-  margin-left: 0;
+.home-screen > .container {
+  min-width: 0;
 }
 
 .access-panel,
@@ -35,8 +36,6 @@
 }
 
 .access-panel {
-  max-width: 760px;
-  margin: 0 auto;
   padding: clamp(28px, 6vw, 56px);
 }
 
@@ -68,7 +67,7 @@ h1 {
   max-width: 100%;
   font-size: clamp(2.1rem, 5vw, 3.45rem);
   line-height: 1.04;
-  overflow-wrap: break-word;
+  overflow-wrap: anywhere;
 }
 
 .access-copy {
@@ -181,16 +180,21 @@ h1 {
 }
 
 .chat-header {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 18px;
   border-bottom: 1px solid var(--line);
   padding-bottom: 18px;
 }
 
+.chat-header .eyebrow {
+  margin-bottom: 12px;
+}
+
+.chat-title-block {
+  min-width: 0;
+}
+
 .chat-header h1 {
   font-size: clamp(1.65rem, 4vw, 3.05rem);
+  overflow-wrap: anywhere;
 }
 
 .ghost-action {
@@ -417,6 +421,11 @@ h1 {
     padding: 10px 0;
   }
 
+  .home-screen {
+    gap: 18px;
+    padding: 10px 0;
+  }
+
   .access-panel {
     padding: 24px 18px;
   }
@@ -428,19 +437,9 @@ h1 {
     padding: 16px 14px;
   }
 
-  .chat-header {
-    display: grid;
-    gap: 12px;
-    padding-bottom: 14px;
-  }
-
   .chat-header h1 {
-    font-size: clamp(1.55rem, 9vw, 2.3rem);
+    font-size: clamp(1.35rem, 7.4vw, 2.1rem);
     line-height: 1;
-  }
-
-  .ghost-action {
-    justify-self: start;
   }
 
   .chat-log {
@@ -472,8 +471,7 @@ h1 {
   }
 
   .home-screen {
-    min-height: 100svh;
-    padding: 12px;
+    padding: 12px 0;
   }
 
   .access-panel,
@@ -493,7 +491,8 @@ h1 {
   }
 
   .home-title {
-    font-size: clamp(1.9rem, 12vw, 2.7rem);
+    font-size: clamp(1.75rem, 9vw, 2.2rem);
+    line-height: 1.08;
   }
 
   .access-copy {
@@ -519,7 +518,13 @@ h1 {
   }
 
   .chat-header h1 {
-    font-size: clamp(1.45rem, 10vw, 2rem);
+    font-size: clamp(1.18rem, 6.7vw, 1.6rem);
+  }
+
+  .ghost-action {
+    min-height: 38px;
+    padding: 0 10px;
+    font-size: 0.72rem;
   }
 
   .message-meta {
