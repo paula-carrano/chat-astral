@@ -2,10 +2,11 @@
   position: relative;
   z-index: 1;
   min-height: 100svh;
+  overflow-x: hidden;
 }
 
 .screen {
-  width: min(1080px, calc(100% - 28px));
+  width: min(1080px, calc(100% - 32px));
   min-height: 100svh;
   margin: 0 auto;
   padding: 28px 0;
@@ -16,6 +17,12 @@
   grid-template-rows: 1fr auto;
   gap: 24px;
   align-items: center;
+}
+
+.home-screen > .row {
+  width: 100%;
+  margin-right: 0;
+  margin-left: 0;
 }
 
 .access-panel,
@@ -166,9 +173,11 @@ h1 {
 
 .chat-screen {
   display: grid;
-  grid-template-rows: auto 1fr auto;
+  grid-template-rows: auto minmax(0, 1fr) auto auto auto;
   gap: 18px;
+  height: calc(100svh - 56px);
   padding: clamp(16px, 3vw, 28px);
+  overflow: hidden;
 }
 
 .chat-header {
@@ -198,14 +207,19 @@ h1 {
   display: grid;
   align-content: start;
   gap: 18px;
-  min-height: 420px;
+  min-height: 0;
   padding: 4px 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  overscroll-behavior: contain;
+  scrollbar-color: rgba(142, 219, 232, 0.35) transparent;
 }
 
 .chat-message {
   position: relative;
   border-left: 2px solid var(--cyan-dim);
   padding: 0 0 0 15px;
+  min-width: 0;
 }
 
 .chat-message.warning {
@@ -233,6 +247,8 @@ h1 {
   display: inline-flex;
   align-items: center;
   gap: 6px;
+  min-width: 0;
+  overflow-wrap: anywhere;
 }
 
 .chat-message .message-coordinates {
@@ -247,6 +263,7 @@ h1 {
   margin: 8px 0 4px;
   color: #f0f7fb;
   font-size: clamp(1rem, 2vw, 1.2rem);
+  overflow-wrap: anywhere;
 }
 
 .chat-message time {
@@ -275,6 +292,7 @@ h1 {
   gap: 8px;
   border-top: 1px solid var(--line);
   padding-top: 16px;
+  min-width: 0;
 }
 
 .composer select {
@@ -395,8 +413,8 @@ h1 {
 
 @media (max-width: 760px) {
   .screen {
-    width: min(100% - 18px, 1080px);
-    padding: 9px 0;
+    width: min(100% - 20px, 1080px);
+    padding: 10px 0;
   }
 
   .access-panel {
@@ -404,11 +422,21 @@ h1 {
   }
 
   .chat-screen {
-    min-height: calc(100svh - 18px);
+    height: calc(100svh - 20px);
+    min-height: calc(100svh - 20px);
+    gap: 14px;
+    padding: 16px 14px;
   }
 
   .chat-header {
     display: grid;
+    gap: 12px;
+    padding-bottom: 14px;
+  }
+
+  .chat-header h1 {
+    font-size: clamp(1.55rem, 9vw, 2.3rem);
+    line-height: 1;
   }
 
   .ghost-action {
@@ -423,13 +451,99 @@ h1 {
     grid-template-columns: 1fr 48px;
   }
 
-  .composer select,
   .composer input {
     grid-column: 1 / -1;
+  }
+
+  .composer input:nth-of-type(3) {
+    grid-column: 1;
   }
 
   .composer button {
     grid-column: 2;
     grid-row: 3;
+  }
+}
+
+@media (max-width: 480px) {
+  .screen {
+    width: 100%;
+    padding: 0;
+  }
+
+  .home-screen {
+    min-height: 100svh;
+    padding: 12px;
+  }
+
+  .access-panel,
+  .chat-screen {
+    border-right: 0;
+    border-left: 0;
+  }
+
+  .access-panel {
+    padding: 22px 16px;
+  }
+
+  .eyebrow {
+    gap: 8px;
+    margin-bottom: 14px;
+    font-size: 0.72rem;
+  }
+
+  .home-title {
+    font-size: clamp(1.9rem, 12vw, 2.7rem);
+  }
+
+  .access-copy {
+    margin: 18px 0 26px;
+  }
+
+  .status-strip {
+    justify-content: stretch;
+    gap: 8px;
+    font-size: 0.72rem;
+  }
+
+  .status-strip span {
+    flex: 1 1 100%;
+    padding: 7px 10px;
+    text-align: center;
+  }
+
+  .chat-screen {
+    height: 100svh;
+    min-height: 100svh;
+    padding: 12px;
+  }
+
+  .chat-header h1 {
+    font-size: clamp(1.45rem, 10vw, 2rem);
+  }
+
+  .message-meta {
+    display: grid;
+    gap: 6px;
+    font-size: 0.86rem;
+  }
+
+  .chat-message {
+    padding-left: 12px;
+  }
+
+  .composer {
+    grid-template-columns: minmax(0, 1fr) 44px;
+    gap: 7px;
+    padding-top: 12px;
+  }
+
+  .composer input,
+  .composer button {
+    min-height: 42px;
+  }
+
+  .composer button {
+    min-width: 44px;
   }
 }
