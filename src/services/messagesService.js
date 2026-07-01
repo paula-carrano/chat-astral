@@ -51,3 +51,13 @@ export async function sendMessage({ profile, text }) {
 
   return docRef;
 }
+
+export async function sendSystemMessage(text) {
+    return addDoc(getMessagesCollection(), {
+        autor: "SISTEMA",
+        ubicacion: "Centro de Operaciones",
+        mensaje: text,
+        tipo: "SISTEMA",
+        fecha: serverTimestamp(),
+    });
+}
